@@ -41,16 +41,18 @@ export const responsiveFontSize = f => {
   return Math.sqrt(Math.pow(tempHeight, 2) + Math.pow(width, 2)) * (f / 100);
 };
 
-//This function takes in desired percentage and  height percentage and returns device dimensions
+//This function takes in desired percentage and  height percentage(respective to the device height) and returns device dimensions
+//Useful when used with react native easy grid
 export const responsiveCustomHeight=(p,h)=>{
     const { height } = Dimensions.get("window");
-    //get size of height
+
     const customheight = height*(h/100);
     //returns the custom width in physical device measurement units
     return customheight * p/100;
 }
 
-//This function takes in desired percentage and  width percentage and returns device dimensions
+//This function takes in desired percentage and  width percentage(respective to the device width) and returns device dimensions
+//Useful when used with react native easy grid
 export const responsiveCustomWidth=(p,w)=>{
     const { width } = Dimensions.get("window");
     //get size of width
@@ -62,14 +64,10 @@ export const responsiveCustomWidth=(p,w)=>{
 //This function takes in actual device height dimensions and returns it in percentage
 export const responsiveHeightPercentage=(h)=>{
   const { height } = Dimensions.get("window");
-  //get size of height
-  if(h>height){
-    console.error(h," The width dimensions are out of range.Please try again")
-    return;
-  }
-  const customheight = (height/h) * 100;
+
+  const customheightpercentage = (height/h) * 100;
   //returns the custom height in percentage
-  return customheight;
+  return customheightpercentage;
 }
 
 
@@ -77,14 +75,15 @@ export const responsiveHeightPercentage=(h)=>{
 export const responsiveWidthPercentage=(w)=>{
  
   const { width } = Dimensions.get("window");
-  //get size of width
-  if(w>width){
-    console.error(w," The width dimensions are out of range.Please try again")
-    return;
-  }
-  const customwidth = (width/w)*100;
+ 
+  const customwidthpercentage = (width/w)*100;
   //returns the custom width in percentage
-  return customwidth;
+  return customwidthpercentage;
+}
+
+//A cross dimension function that returns  a value based on the calculations of the dimensions and the percentage
+export const responsiveCrossDimension=(p,d)=>{
+  return d*(p/100);
 }
 
 
