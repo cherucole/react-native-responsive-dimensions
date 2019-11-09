@@ -41,6 +41,25 @@ export const responsiveFontSize = f => {
   return Math.sqrt(Math.pow(tempHeight, 2) + Math.pow(width, 2)) * (f / 100);
 };
 
+
+export const responsiveCustomHeight=(p,h)=>{
+    const { height } = Dimensions.get("window");
+    //get size of height
+    const customheight = height*(h/100);
+
+    return customheight * p/100;
+}
+
+
+export const responsiveCustomWidth=(p,w)=>{
+    const { width } = Dimensions.get("window");
+    //get size of width
+    const customwidth = width*(w/100);
+
+    return customwidth * p/100;
+}
+
+
 export const useResponsiveHeight = h => {
   const [calculatedHeight, setCalculatedHeight] = useState(responsiveHeight(h));
 
