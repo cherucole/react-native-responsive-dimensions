@@ -43,50 +43,53 @@ export const responsiveFontSize = f => {
 
 //This function takes in desired percentage and  height percentage(respective to the device height) and returns device dimensions
 //Useful when used with react native easy grid
-export const responsiveCustomHeight=(p,h)=>{
-    const { height } = Dimensions.get("window");
+export const responsiveCustomHeight = (p, h) => {
+  const { height } = Dimensions.get("window");
 
-    const customheight = height*(h/100);
-    //returns the custom width in physical device measurement units
-    return customheight * p/100;
-}
+  const customheight = height * (h / 100);
+  //returns the custom width in physical device measurement units
+  return (customheight * p) / 100;
+};
 
 //This function takes in desired percentage and  width percentage(respective to the device width) and returns device dimensions
 //Useful when used with react native easy grid
-export const responsiveCustomWidth=(p,w)=>{
-    const { width } = Dimensions.get("window");
-    //get size of width
-    const customwidth = width*(w/100);
-    //returns the custom width in physical device measurement units
-    return customwidth * p/100;
-}
+export const responsiveCustomWidth = (p, w) => {
+  const { width } = Dimensions.get("window");
+  //get size of width
+  const customwidth = width * (w / 100);
+  //returns the custom width in physical device measurement units
+  return (customwidth * p) / 100;
+};
 
 //This function takes in actual device height dimensions and returns it in percentage
-export const responsiveHeightPercentage=(h)=>{
+export const responsiveHeightPercentage = h => {
   const { height } = Dimensions.get("window");
 
-  const customheightpercentage = (height/h) * 100;
+  const customheightpercentage = (height / h) * 100;
   //returns the custom height in percentage
   return customheightpercentage;
-}
-
+};
 
 //This function takes in actual device width dimensions and returns it in percentage
-export const responsiveWidthPercentage=(w)=>{
- 
+export const responsiveWidthPercentage = w => {
   const { width } = Dimensions.get("window");
- 
-  const customwidthpercentage = (width/w)*100;
+
+  const customwidthpercentage = (width / w) * 100;
   //returns the custom width in percentage
   return customwidthpercentage;
-}
+};
 
 //A cross dimension function that returns  a value based on the calculations of the dimensions and the percentage
-export const responsiveCrossDimension=(p,d)=>{
-  return d*(p/100);
-}
+export const responsiveCrossDimension = (p, d) => {
+  return d * (p / 100);
+};
 
-
+//a function accepting height and wright in percentage and rturns calculated percentage of the area in device units
+export const responsiveAreaPercentage = (w, h) => {
+  const calculatedwidth = responsiveWidth(w);
+  const calculatedheight = responsiveHeight(h);
+  return calculatedheight * calculatedwidth;
+};
 
 export const useResponsiveHeight = h => {
   const [calculatedHeight, setCalculatedHeight] = useState(responsiveHeight(h));
