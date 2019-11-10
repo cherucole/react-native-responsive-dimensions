@@ -84,13 +84,19 @@ export const responsiveCrossDimension = (p, d) => {
   return d * (p / 100);
 };
 
-//a function accepting height and wright in percentage and rturns calculated percentage of the area in device units
+//a function accepting height and width in percentage and returns calculated percentage of the area in device units
 export const responsiveAreaPercentage = (w, h) => {
   const calculatedwidth = responsiveWidth(w);
   const calculatedheight = responsiveHeight(h);
   return calculatedheight * calculatedwidth;
 };
 
+//a function accepting height and width and their respective supersets in percentage and returns calculated percentage of the area in device units
+export const responsiveCustomAreaPercentage = (w, h, wp, hp) => {
+  const calculatedwidth = responsiveCustomWidth(w, wp);
+  const calculatedheight = responsiveCustomHeight(h, hp);
+  return calculatedheight * calculatedwidth;
+};
 export const useResponsiveHeight = h => {
   const [calculatedHeight, setCalculatedHeight] = useState(responsiveHeight(h));
 
