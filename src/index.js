@@ -131,6 +131,7 @@ export const useResponsiveWidth = w => {
   return calculatedWidth;
 };
 
+//Hook functions
 export const useResponsiveFontSize = f => {
   const [calculatedFontSize, setCalculatedFontSize] = useState(
     responsiveFontSize(f)
